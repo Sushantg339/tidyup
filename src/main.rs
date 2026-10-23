@@ -4,8 +4,12 @@ use std::path::PathBuf;
 
 // take terminal input
 fn term_input() -> PathBuf {
+    // Read the command-line arguments.
     let inp: Vec<String> = env::args().collect();
-    let dir_name: PathBuf = if inp.len() < 1 || inp[1] == "." {
+
+    // `env::args()` includes the program name as the first argument,
+    // so check whether a directory path was provided as the second argument.
+    let dir_name: PathBuf = if inp.len() < 2 || inp[1] == "." {
         env::current_dir().unwrap()
     } else {
         PathBuf::from(&inp[1])
@@ -50,7 +54,8 @@ fn main() {
     for dir_item in dir_entries {
         match dir_item.path().extension() {
             Some(extension) => {
-                let ext = extension.to_string_lossy().to_string();
+                // Convert the file extension to lowercase for case-insensitive matching.
+                let ext = extension.to_string_lossy().to_lowercase();
                 if matches!(
                     ext.as_str(),
                     "jpg" | "jpeg" | "png" | "gif" | "webp" | "svg"
