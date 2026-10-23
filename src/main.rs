@@ -5,10 +5,10 @@ use std::path::PathBuf;
 // take terminal input
 fn term_input() -> PathBuf {
     let inp: Vec<String> = env::args().collect();
-    let dir_name: PathBuf = if inp.len() < 1 || inp[2] == "." {
+    let dir_name: PathBuf = if inp.len() < 1 || inp[1] == "." {
         env::current_dir().unwrap()
     } else {
-        PathBuf::from(&inp[2])
+        PathBuf::from(&inp[1])
     };
     return dir_name;
 }
