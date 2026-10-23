@@ -1,6 +1,16 @@
 [package]
-name = "tidyup"
-version = "0.1.0"
+name = "tidyup-cli"
+version = "0.1.1"
 edition = "2024"
+description = "A CLI tool to organize files by type."
+repository = "https://github.com/utkarsh-saxena271/tidyup"
+readme = "README.md"
+license = "MIT"
+keywords = ["cli", "file-organizer", "filesystem"]
+categories = ["command-line-utilities"]
+
+[[bin]]
+name = "tidyup"
+path = "src/main.rs"
 
 [dependencies]
